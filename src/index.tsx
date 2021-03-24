@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { render } from 'react-dom';
+
 import './styles/app.scss';
+
+import { Record, Key, Value } from './components/json-viewer';
 
 const App = () => {
   return (

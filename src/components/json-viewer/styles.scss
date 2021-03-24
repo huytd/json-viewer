@@ -1,0 +1,17 @@
+.json-record {
+  border: 1px solid red;
+  padding: 15px;
+
+  .json-record-key {
+    vertical-align: top;
+    display: inline-block;
+    border: 1px solid blue;
+    padding: 15px;
+  }
+
+  .json-record-value {
+    display: inline-block;
+    border: 1px solid green;
+    padding: 15px;
+  }
+}
