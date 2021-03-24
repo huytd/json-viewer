@@ -4,12 +4,21 @@
   "main": "index.js",
   "author": "Huy Tran <kingbazoka@gmail.com>",
   "license": "BSD-3-Clause",
+  "scripts": {
+    "dev": "parcel ./src/index.html"
+  },
   "dependencies": {
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "assemble": "~0.3.11",
+    "grunt": "~0.4.0",
     "parcel-bundler": "^1.12.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "styles": "^0.2.1",
     "typescript": "^4.2.3"
+  },
+  "devDependencies": {
+    "sass": "^1.32.8"
   }
 }
