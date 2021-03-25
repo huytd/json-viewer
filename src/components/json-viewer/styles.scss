@@ -1,17 +1,14 @@
 .json-record {
-  border: 1px solid red;
-  padding: 15px;
+  padding: 5px 10px;
 
   .json-record-key {
     vertical-align: top;
+    margin-right: 5px;
+    font-weight: bold;
     display: inline-block;
-    border: 1px solid blue;
-    padding: 15px;
   }
 
   .json-record-value {
     display: inline-block;
-    border: 1px solid green;
-    padding: 15px;
   }
 }
