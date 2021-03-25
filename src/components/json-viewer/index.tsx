@@ -2,7 +2,15 @@ import './styles.scss';
 import * as React from 'react';
 import {getPrefix, getSuffix} from '~/lib/utils';
 
-export const JsonRecord = ({ data }) => {
+interface JsonRecordProps {
+  data: any
+}
+
+interface GenericProps {
+  children: any
+}
+
+export const JsonRecord = ({ data }: JsonRecordProps) => {
   return (
     <React.Fragment>
       {getPrefix(data)}
@@ -21,7 +29,7 @@ export const JsonRecord = ({ data }) => {
   )
 };
 
-const Key = ({ children }) => {
+const Key = ({ children }: GenericProps) => {
   return (
     <div className="json-record-key">
       {children}:
@@ -29,7 +37,7 @@ const Key = ({ children }) => {
   )
 };
 
-const Value = ({ children }) => {
+const Value = ({ children }: GenericProps) => {
   const valueType = typeof children;
   return (
     <div className="json-record-value" data-type={valueType}>
