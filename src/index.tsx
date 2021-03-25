@@ -20,10 +20,12 @@ const App = () => {
     },
     bar: [
       {
-        inner: 'foo'
+        inner: 'foo',
+        ok: true
       },
       {
-        inner: 'bar'
+        inner: 'bar',
+        ok: false
       }
     ]
   };

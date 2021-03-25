@@ -10,5 +10,17 @@
 
   .json-record-value {
     display: inline-block;
+
+    &[data-type='string'] {
+      color: #379929;
+    }
+
+    &[data-type='number'] {
+      color: #c23616;
+    }
+
+    &[data-type='boolean'] {
+      color: #7158e2;
+    }
   }
 }

@@ -42,7 +42,7 @@ const Value = ({ children }: GenericProps) => {
   return (
     <div className="json-record-value" data-type={valueType}>
       {getPrefix(children)}
-      {children}
+      {children.toString()}
       {getSuffix(children)}
     </div>
   )
