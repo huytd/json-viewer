@@ -15,7 +15,7 @@
       color: #379929;
     }
 
-    &[data-type='number'] {
+    &[data-type='number'], &[data-type='null'] {
       color: #c23616;
     }
 

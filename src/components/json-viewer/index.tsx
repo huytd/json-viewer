@@ -1,6 +1,6 @@
 import './styles.scss';
 import * as React from 'react';
-import {getPrefix, getSuffix} from '~/lib/utils';
+import {getPrefix, getSuffix, isObject} from '~/lib/utils';
 
 interface JsonRecordProps {
   data: any
@@ -17,7 +17,7 @@ export const JsonRecord = ({ data }: JsonRecordProps) => {
       {Object.keys(data).map((key: string) => (
         <div className="json-record" key={key}>
           <Key>{key}</Key>
-          {typeof data[key] !== 'object' ? (
+          {!isObject(data[key]) ? (
             <Value>{data[key]}</Value>
           ) : (
             <JsonRecord data={data[key]} />
@@ -38,11 +38,11 @@ const Key = ({ children }: GenericProps) => {
 };
 
 const Value = ({ children }: GenericProps) => {
-  const valueType = typeof children;
+  const valueType = children === null ? "null" : typeof children;
   return (
     <div className="json-record-value" data-type={valueType}>
       {getPrefix(children)}
-      {children.toString()}
+      {children?.toString() || "null"}
       {getSuffix(children)}
     </div>
   )

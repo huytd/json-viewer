@@ -16,7 +16,8 @@ const App = () => {
 
   const nestedObjectData = {
     foo: {
-      inner_foo: 'hello'
+      inner_foo: 'hello',
+      yolo: null
     },
     bar: [
       {

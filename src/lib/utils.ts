@@ -1,4 +1,4 @@
-export const isObject = (input: any) => typeof input === 'object';
+export const isObject = (input: any) => typeof input === 'object' && input !== null;
 export const isArray = (input: any) => Array.isArray(input);
 export const isString = (input: any) => typeof input === 'string';
 
