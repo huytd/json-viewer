@@ -1,15 +1,24 @@
 import * as React from 'react';
 import './styles.scss';
 
-export const Record = ({ children }) => {
+export const JsonRecord = ({ data }) => {
   return (
     <div className="json-record">
-      {children}
+      {Object.keys(data).map((key: string) => (
+        <React.Fragment key={key}>
+          <Key>{key}</Key>
+        {typeof data[key] !== 'object' ? (
+          <Value>{data[key]}</Value>
+        ) : (
+          <JsonRecord data={data[key]} />
+        )}
+        </React.Fragment>
+      ))}
     </div>
   )
 };
 
-export const Key = ({ children }) => {
+const Key = ({ children }) => {
   return (
     <div className="json-record-key">
       {children}
@@ -17,7 +26,7 @@ export const Key = ({ children }) => {
   )
 };
 
-export const Value = ({ children }) => {
+const Value = ({ children }) => {
   return (
     <div className="json-record-value">
       {children}

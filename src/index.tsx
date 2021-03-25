@@ -3,37 +3,41 @@ import { render } from 'react-dom';
 
 import './styles/app.scss';
 
-import { Record, Key, Value } from './components/json-viewer';
+import { JsonRecord } from './components/json-viewer';
 
 const App = () => {
+  const singleEntryData = {
+    foo: 'bar'
+  };
+
+  const singleEntryWithArrayData = {
+    foo: [1,2,3,4,5]
+  };
+
+  const nestedObjectData = {
+    foo: {
+      inner_foo: 'hello'
+    },
+    bar: [
+      {
+        inner: 'foo'
+      },
+      {
+        inner: 'bar'
+      }
+    ]
+  };
+
   return (
     <div className="container">
       {/* Single entry case */}
-      <Record>
-        <Key>foo</Key>
-        <Value>bar</Value>
-      </Record>
+      <JsonRecord data={singleEntryData} />
 
       {/* Single entry with array value */}
-      <Record>
-        <Key>foo</Key>
-        <Value>{[1,2,3,4,5]}</Value>
-      </Record>
+      <JsonRecord data={singleEntryWithArrayData} />
 
       {/* Nested object case */}
-      <Record>
-        <Key>foo2</Key>
-        <Value>
-          <Record>
-            <Key>inner_foo</Key>
-            <Value>hello</Value>
-          </Record>
-          <Record>
-            <Key>inner_foo2</Key>
-            <Value>hello2</Value>
-          </Record>
-        </Value>
-      </Record>
+      <JsonRecord data={nestedObjectData} />
     </div>
   )
 };
