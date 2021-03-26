@@ -1,7 +1,27 @@
 .json-record {
-  padding: 5px 12px;
+  padding: 5px 15px;
   margin-left: 4px;
   border-left: 1px solid #ccc;
+  position: relative;
+
+  .json-record-toggle-button {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    border: 1px solid #000;
+    left: -5px;
+    line-height: 15px;
+    text-algin: center;
+    cursor: pointer;
+  }
+
+  .json-record-collapsed-item {
+    background: #eee;
+    padding: 2px 4px;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
 
   .json-record-key {
     vertical-align: top;

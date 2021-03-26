@@ -1,6 +1,7 @@
 import './styles.scss';
 import * as React from 'react';
-import {getPrefix, getSuffix, isObject} from '~/lib/utils';
+import {useState} from 'react';
+import {getPrefix, getSuffix, isObject, isToggleable} from '~/lib/utils';
 
 interface JsonRecordProps {
   data: any
@@ -10,19 +11,67 @@ interface GenericProps {
   children: any
 }
 
+interface ToggleButtonProps {
+  collapsed: boolean,
+  visible: boolean,
+  onClick: React.MouseEventHandler
+}
+
+interface JsonRecordItemProps {
+  itemKey: string,
+  data: any
+}
+
+const ToggleButton = ({
+  collapsed = false,
+  visible = false,
+  onClick
+}: ToggleButtonProps) => {
+  return visible ? (
+    <button className="json-record-toggle-button" onClick={onClick}>
+      { collapsed ? "+" : "-"}
+    </button>
+  ) : null;
+};
+
+const CollapsedItem = () => <span className="json-record-collapsed-item">...</span>;
+
+const JsonRecordItem = ({ itemKey, data }: JsonRecordItemProps) => {
+  const [collapsed, setCollapsed] = useState(false);
+
+  const value = data[itemKey];
+
+  const toggleButtonHandler = () => {
+    setCollapsed(!collapsed);
+  };
+
+  return (
+    <div className="json-record">
+      <ToggleButton
+        visible={isToggleable(value)}
+        collapsed={collapsed}
+        onClick={toggleButtonHandler}
+      />
+      <Key>{itemKey}</Key>
+      {!isObject(value) ? (
+        <Value>{value}</Value>
+      ) : (
+        !collapsed ? <JsonRecord data={value} /> : <CollapsedItem/>
+      )},
+    </div>
+  )
+};
+
 export const JsonRecord = ({ data }: JsonRecordProps) => {
   return (
     <React.Fragment>
       {getPrefix(data)}
       {Object.keys(data).map((key: string) => (
-        <div className="json-record" key={key}>
-          <Key>{key}</Key>
-          {!isObject(data[key]) ? (
-            <Value>{data[key]}</Value>
-          ) : (
-            <JsonRecord data={data[key]} />
-          )},
-        </div>
+        <JsonRecordItem
+          key={key}
+          itemKey={key}
+          data={data}
+        />
       ))}
       {getSuffix(data)}
     </React.Fragment>
